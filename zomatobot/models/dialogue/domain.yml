@@ -1,0 +1,134 @@
+action_factory: null
+action_names:
+- utter_greet
+- utter_goodbye
+- utter_default
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_cuisine
+- utter_ask_price
+- utter_ask_to_send_mail
+- utter_ask_emailid
+- utter_not_match_location
+- utter_no_result_price
+- utter_email_sent
+- action_restaurant
+- action_sendemail
+- action_validatelocation
+actions:
+- utter_greet
+- utter_goodbye
+- utter_default
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_cuisine
+- utter_ask_price
+- utter_ask_to_send_mail
+- utter_ask_emailid
+- utter_not_match_location
+- utter_no_result_price
+- utter_email_sent
+- actions.ActionSearchRestaurants
+- actions.ActionSendEmail
+- actions.ActionValidateLocation
+config:
+  store_entities_as_slots: true
+entities:
+- location
+- cuisine
+- price_lowerlimit
+- price_upperlimit
+- email_id
+intents:
+- greet
+- affirm
+- deny
+- goodbye
+- thankyou
+- restaurant_search
+- send_email
+slots:
+  city_match:
+    initial_value: null
+    type: rasa_core.slots.CategoricalSlot
+    values:
+    - match
+    - notmatch
+  cuisine:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  email_id:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  email_response:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  location:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  price_lowerlimit:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  price_upperlimit:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+templates:
+  utter_ask_cuisine:
+  - buttons:
+    - payload: Chinese
+      title: Chinese
+    - payload: Mexican
+      title: Mexican
+    - payload: Italian
+      title: Italian
+    - payload: American
+      title: American
+    - payload: South Indian
+      title: South Indian
+    - payload: North Indian
+      title: North Indian
+    text: what kind of cuisine would you like?
+  utter_ask_emailid:
+  - text: Please provide your email id
+  - text: What's your email ID?
+  - text: Your email ID please?
+  - text: Please share your email ID?
+  utter_ask_howcanhelp:
+  - text: how can I help you?
+  utter_ask_location:
+  - text: In what location?
+  utter_ask_price:
+  - buttons:
+    - payload: Lesser than Rs. 300
+      title: Lesser than Rs. 300
+    - payload: Rs. 300 to 700
+      title: Rs. 300 to 700
+    - payload: More than 700
+      title: More than 700
+    text: what price range are you looking at?
+  utter_ask_to_send_mail:
+  - buttons:
+    - payload: Yes
+      title: Yes
+    - payload: No
+      title: No
+    text: Would you like to receive your results in an email?
+  utter_default:
+  - text: default message
+  utter_email_sent:
+  - text: Mail has been sent
+  - text: Here you go. Restaurant list sent to your inbox
+  - text: Zoom... Please check your inbox
+  - text: Sent. Enjoy your meal!
+  - text: Voot!. You should receive mail shortly.
+  utter_goodbye:
+  - text: goodbye :(
+  - text: Bye-bye
+  utter_greet:
+  - text: hey there! How may i help you
+  - text: Hi, How can I help you!
+  - text: Hey, How is it going. How May I help you Today
+  utter_no_result_price:
+  - text: Sorry, there are no results for your requirement. Thank you.
+  utter_not_match_location:
+  - text: Sorry we do not operate in that location yet. Please provide other location
